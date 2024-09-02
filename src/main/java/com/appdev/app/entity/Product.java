@@ -1,0 +1,19 @@
+package com.appdev.app.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+
+@Table(name="product")
+@Entity
+@Data
+@NoArgsConstructor
+public class Product {
+//    @GeneratedValue
+    /**   VARCHAR2(20)  */    @Id @Column(name="ID_PRD"            , nullable=false ) private String     idPrd             ;
+    /**   VARCHAR2(1)   */        @Column(name="NAME"                               ) private String     name           ;
+    /**   VARCHAR2(1)   */        @Column(name="PRICE"                              ) private BigDecimal price = BigDecimal.ZERO;
+
+}

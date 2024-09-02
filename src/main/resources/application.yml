@@ -1,0 +1,13 @@
+server:
+  port: 8095
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecomm01
+    username: postgres
+    password: #need to be encrypted
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
