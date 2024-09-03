@@ -1,9 +1,6 @@
 package com.appdev.app.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class PrdCategory {
-    /**   VARCHAR2(20)  */    @Id @Column(name="ID_CTGR"            , nullable=false ) private String     idCtgr             ;
+    /**   VARCHAR2(20)  */    @Id @Column(name="ID_CTGR"            , nullable=false ) private Integer    idCtgr             ;
     /**   VARCHAR2(1)   */        @Column(name="NAME"                                ) private String     name           ;
 
 }

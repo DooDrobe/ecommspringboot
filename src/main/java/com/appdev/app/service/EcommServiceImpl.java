@@ -2,9 +2,13 @@ package com.appdev.app.service;
 
 import com.appdev.app.entity.PrdCategory;
 import com.appdev.app.repository.DaoPrdCategory;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class EcommServiceImpl implements EcommService{
 
     @Autowired
@@ -12,7 +16,7 @@ public class EcommServiceImpl implements EcommService{
 
     @Override
     @Transactional
-    public String saveProduct(PrdCategory prdCategory) {
+    public Integer saveProduct(PrdCategory prdCategory) {
         return daoPrdCategory.save(prdCategory).getIdCtgr();
     }
 
@@ -38,5 +42,11 @@ public class EcommServiceImpl implements EcommService{
     @Transactional
     public boolean isAvailable(Integer id) {
         return daoPrdCategory.existsById(id);
+    }
+
+    @Override
+    @Transactional
+    public List<PrdCategory> getAllProduct() {
+        return daoPrdCategory.findAll();
     }
 }
