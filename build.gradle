@@ -36,16 +36,34 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-//	implementation 'javax.servlet:javax.servlet-api:4.0.1'
-//	implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.2.22'
-//	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
-//	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
 
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.6' // Using OpenAPI UI
-//	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+	// Spring Boot Starter Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// JWT dependency for creating and parsing JWT tokens
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5' // if you are using Jackson for JSON processing
+
+	//encrypt pass
+	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
+	implementation 'org.jasypt:jasypt:1.9.3'
 
 }
-
+springBoot {
+	mainClass.set('com.appdev.app.EcommApplication')  // Replace with your actual main class path
+//	mainClassName = 'com.appdev.app.EcommApplication'  // Try using mainClassName
+}
 tasks.named('test') {
 	useJUnitPlatform()
+}
+jar {
+	archiveBaseName.set('ecommspring')
+	archiveVersion.set('0.0.1-SNAPSHOT')  // Adjust version as needed
+}
+
+bootJar {
+	archiveFileName = 'ecommspring.jar' // Ensure this matches the Dockerfile
 }

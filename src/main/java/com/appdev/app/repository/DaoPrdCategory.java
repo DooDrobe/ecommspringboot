@@ -7,6 +7,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Repository;
 
 //@NoRepositoryBean
-//@Repository
+@Repository
 public interface DaoPrdCategory extends JpaRepository<PrdCategory, Integer> {
 }

@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app:
+    image: ecommspring
+    ports:
+      - "8095:8095"
+    depends_on:
+      - db
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: ${DB_URL}
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      JASYPT_ENCRYPTOR_PASSWORD: ${JASYPT_ENCRYPTOR_PASSWORD}  # Optional for Jasypt usage
+
+  db:
+    image: postgres
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5433:5432" #porting postgre local port 32 to 33
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # Mount volume to persist data
+
+volumes:
+  pgdata:

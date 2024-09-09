@@ -2,6 +2,7 @@ package com.appdev.app.controller;
 
 import com.appdev.app.entity.PrdCategory;
 import com.appdev.app.service.EcommService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -10,10 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Slf4j
 @RestController
 @RequestMapping("/rest/api/ecomm")
-@Controller
 public class EcommController {
     @Autowired
     private EcommService ecommService;
@@ -82,9 +82,10 @@ public class EcommController {
 
     //Retrive all product
     @GetMapping(value = "/getAllEcommProduct")
-    public ResponseEntity<String> getAllEcommProduct(@PathVariable Integer id){
+    public ResponseEntity<String> getAllEcommProduct(){
         ResponseEntity responseEntity = null;
         List<PrdCategory> allProduct = ecommService.getAllProduct();
+        log.debug("Something show bro");
         if(allProduct.isEmpty()){
             String message = "No Data Found";
             responseEntity = new ResponseEntity<String>(message,HttpStatus.OK);
