@@ -1,0 +1,17 @@
+server:
+  port: 8096
+spring:
+  datasource:
+    url: ${DEV_DATASOURCE_URL}
+    username: ${DEV_DATASOURCE_USERNAME}
+    password: ${DEV_DATASOURCE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    user:
+      name: ${DEV_SECURITY_USER_NAME}
+      password: ${DEV_SECURITY_USER_PASSWORD}
